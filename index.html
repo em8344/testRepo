@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="content-language" content="fr-FR"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+		<base href="/">
+
+		<!-- Angular Material style sheet -->
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+		<title>Ardoise</title>
+		
+	</head>
+	<body ng-app="myApp" ng-cloak ng-controller="indexCtrl" layout="column">
+	
+		 <section layout="row" flex="">
+
+			<md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" >
+
+				<md-toolbar class="md-theme-indigo">
+					<div class="md-toolbar-tools">
+						<span flex=""></span>
+						<h1>Mes plats à l'ardoise</h1>
+						
+						<span flex=""></span>
+						<md-button class="md-icon-button md-primary" ng-click="toggleLeft()" hide-gt-md="" aria-label="Fermer">
+							<md-icon md-svg-src="images/icons/close.svg"></md-icon>
+						</md-button>
+					</div>
+				</md-toolbar>
+				
+				
+				
+				<md-content flex="" layout="column" >
+					<md-button class="md-button md-primary" ng-click="" aria-label="Connexion" hide-gt-md="" >
+						<p class="md-subhead">Connexion/Inscription</p>
+					</md-button>
+						
+					<div layout="column" layout-align="center stretch" layout-margin="" layout-padding="" hide show-gt-md="">
+						<md-button ng-repeat="route in routes" ng-click="goto(route)" flex="" ng-class="route.selected == 'true' ? 'md-raised md-primary' : 'md-raised'" layout="column">
+							<md-icon md-svg-src="images/icons/{{route.picto}}.svg" aria-label="Navbar" style="margin-top:7px;"></md-icon>
+							<span>{{route.name}}</span>
+						</md-button>
+					</div>
+				</md-content>
+
+			</md-sidenav>
+
+			<md-content flex="" layout="column">
+				<md-toolbar class="md-theme-indigo" >
+					<div class="md-toolbar-tools" flex="">
+						<md-button ng-click="toggleLeft()" class="md-primary md-icon-button" hide-gt-md="" >
+							<md-icon md-svg-src="images/icons/menu.svg" aria-label="Menu"></md-icon>
+						</md-button>
+						<span flex="" hide-gt-md=""></span>
+						<div layout="column" layout-align="top center" class="md-headline">
+							{{ardoise.name}}
+						</div>
+			
+						<span flex=""></span>
+						<md-button class="md-button md-primary" ng-click=""  aria-label="Connexion" hide show-gt-md="">
+							<p class="md-subhead">Connexion/Inscription</p>
+						</md-button>
+						<md-menu md-position-mode="target-right target">
+							<md-button class="md-primary md-icon-button md-button" ng-click="openMenu($mdMenu, $event)">
+								<md-icon md-svg-src="images/icons/menu-vert.svg" aria-label="Menu"></md-icon>
+							</md-button>
+						
+							<md-menu-content width="4">
+								<md-menu-item>
+								  <md-button ng-click="">
+									<md-icon md-svg-src="images/icons/menu-vert.svg" md-menu-align-target></md-icon>
+									Redial
+								  </md-button>
+								</md-menu-item>
+								<md-menu-item>
+								  <md-button disabled="disabled" ng-click="">
+									<md-icon md-svg-src="images/icons/menu-vert.svg"></md-icon>
+									Check voicemail
+								  </md-button>
+								</md-menu-item>
+								<md-menu-divider></md-menu-divider>
+								<md-menu-item>
+								  <md-button ng-click="">
+									<md-icon md-svg-src="images/icons/menu-vert.svg"></md-icon>
+									notifications
+								  </md-button>
+								</md-menu-item>
+							</md-menu-content>
+						</md-menu>
+					</div>
+				</md-toolbar>
+				
+				
+					
+				<div flex="" style="background:lightgrey;">
+				</div>
+				
+				<div layout="row" layout-align="center stretch" layout-margin="" layout-padding="" hide-gt-md="">
+				
+					<md-button ng-repeat="route in routes" ng-click="goto(route)" flex="" ng-class="route.selected == 'true' ? 'md-raised md-primary' : 'md-raised'" layout="column">
+						<md-icon md-svg-src="images/icons/{{route.picto}}.svg" aria-label="Navbar" style="margin-top:7px;"></md-icon>
+						<span>{{route.name}}</span>
+					</md-button>
+				</div>
+					
+				
+
+			</md-content>
+
+		  </section>
+		
+		
+		  
+	  
+		<!-- Angular Material requires Angular.js Libraries -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-aria.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-messages.min.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-resource.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-sanitize.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="../javascripts/lottie.js"></script>
+	
+	<!-- Angular Material Library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+		
+		<script src="../javascripts/myApp.js"></script>
+	</body>
+</html>
